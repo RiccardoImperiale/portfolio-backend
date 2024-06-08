@@ -19,7 +19,7 @@ use App\Http\Controllers\Admin\TechnologyController;
 */
 
 Route::get('/', function () {
-    return redirect()->route('login');
+    return redirect()->route('register');
 });
 
 Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(function () {
