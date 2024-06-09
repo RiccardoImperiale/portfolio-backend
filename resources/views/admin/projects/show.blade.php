@@ -76,6 +76,8 @@
                                         </a>
                                     </div>
                                 @endif
+                                <a class="font-bold ms-auto text-indigo-700 hover:text-gray-700 hover:underline me-5"
+                                    href="{{ route('admin.projects.index') }}">Back To Projects</a>
                             </div>
                         </div>
                     </div>
