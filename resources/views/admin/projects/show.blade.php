@@ -8,7 +8,6 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg ring-1 ring-gray-700">
-
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg px-6 pt-10 pb-2">
                     <div
                         class="flex justify-between border-b border-gray-900/10 items-center w-full py-10 text-lg font-semibold text-left text-gray-900 bg-white">
@@ -21,10 +20,10 @@
                             </div>
                         </div>
                         <div>
+                            <a href="{{ route('admin.projects.edit', $project) }}"
+                                class="text-white bg-indigo-700 hover:bg-indigo-800 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none ">Edit</a>
                             <a href="{{ route('admin.projects.create') }}"
-                                class="text-white bg-indigo-700 hover:bg-indigo-800 font-medium rounded-lg text-sm px-5 py-2.5  focus:outline-none ">Edit</a>
-                            <a href="{{ route('admin.projects.create') }}"
-                                class="text-white bg-gray-700 hover:bg-gray-800 font-medium rounded-lg text-sm px-5 py-2.5  focus:outline-none ">Delete</a>
+                                class="text-white bg-gray-700 hover:bg-gray-800 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none ">Delete</a>
                         </div>
                     </div>
                     <div class="py-10 flex gap-10">

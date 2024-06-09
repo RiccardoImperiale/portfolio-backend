@@ -50,7 +50,7 @@ class ProjectController extends Controller
             $project->technologies()->attach($validated['technologies']);
         }
 
-        return to_route('admin.projects.index')->with('message', 'Project created successfully');
+        return to_route('admin.projects.index')->with('message', "Project $project->title created successfully");
     }
 
     /**
@@ -66,7 +66,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        $types = Type::all();
+        $technologies = Technology::all();
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -74,7 +76,27 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        $validated = $request->validated();
+
+        $validated['slug'] = Str::slug($request->title, '-');
+
+        if ($request->has('image')) {
+            if ($project->image) {
+                Storage::delete($project->image);
+            }
+
+            $validated['image'] = Storage::put('uploads', $request->image);
+        }
+
+        $project->update($validated);
+
+        if ($request->has('technologies')) {
+            $project->technologies()->sync($validated['technologies']);
+        } else {
+            $project->technologies()->detach();
+        }
+
+        return to_route('admin.projects.index', $project)->with('message', "Project $project->title updated successfully");
     }
 
     /**

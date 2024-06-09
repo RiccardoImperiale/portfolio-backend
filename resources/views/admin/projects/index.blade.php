@@ -4,7 +4,7 @@
             {{ __('Projects') }}
         </h2>
     </x-slot>
-
+    <x-session-messages />
     <div class="py-12 ">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg ring-1 ring-gray-700">
