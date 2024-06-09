@@ -27,9 +27,7 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
     Route::resource('projects', ProjectController::class)->parameters([
         'projects' => 'project:slug'
     ]);
-    Route::resource('types', TypeController::class)->parameters([
-        'types' => 'type:slug'
-    ]);
+    Route::resource('types', TypeController::class);
     Route::resource('technologies', TechnologyController::class)->parameters([
         'technologies' => 'technology:slug'
     ]);

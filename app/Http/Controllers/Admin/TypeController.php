@@ -6,6 +6,7 @@ use App\Http\Requests\StoreTypeRequest;
 use App\Http\Requests\UpdateTypeRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Type;
+use Illuminate\Support\Str;
 
 class TypeController extends Controller
 {
@@ -14,7 +15,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        $types = Type::orderByDesc('id')->paginate(5);
+        return view('admin.types.index', compact('types'));
     }
 
     /**
@@ -22,7 +24,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.types.create', compact('types'));
     }
 
     /**
@@ -30,7 +32,12 @@ class TypeController extends Controller
      */
     public function store(StoreTypeRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $validated['slug'] = Str::slug($request->name, '-');
+
+        $type = Type::create($validated);
+
+        return to_route('admin.types.index')->with('message', "Type $type->name created successfully");
     }
 
     /**
@@ -38,7 +45,7 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
-        //
+        return back();
     }
 
     /**
@@ -46,7 +53,7 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        return back();
     }
 
     /**
@@ -54,7 +61,9 @@ class TypeController extends Controller
      */
     public function update(UpdateTypeRequest $request, Type $type)
     {
-        //
+        $type->update($request->validated());
+
+        return to_route('admin.types.index')->with('message', "Type $type->name updated successfully");
     }
 
     /**
@@ -62,6 +71,7 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $type->delete();
+        return to_route('admin.types.index', $type)->with('message', "Type $type->name deleted successfully");
     }
 }

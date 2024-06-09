@@ -5,7 +5,6 @@
         <span class="sr-only">Info</span>
         <div class="ms-3 text-xl">
             {{ session('message') }}
-            fwe fwef
         </div>
         <button type="button"
             class="ms-auto -mx-1.5 -my-1.5 bg-blue-50 text-blue-500 rounded-lg p-1 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-700 dark:text-green-400 dark:hover:bg-gray-800"

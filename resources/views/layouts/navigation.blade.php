@@ -18,6 +18,12 @@
                     <x-nav-link :href="route('admin.projects.index')" :active="request()->routeIs('admin.projects.index')">
                         {{ __('Projects') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.types.index')" :active="request()->routeIs('admin.types.index')">
+                        {{ __('Types') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.technologies.index')" :active="request()->routeIs('admin.technologies.index')">
+                        {{ __('Technologies') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -83,6 +89,12 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('admin.projects.index')" :active="request()->routeIs('admin.projects.index')">
                 {{ __('Projects') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.types.index')" :active="request()->routeIs('admin.types.index')">
+                {{ __('Types') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.technologies.index')" :active="request()->routeIs('admin.technologies.index')">
+                {{ __('Technologies') }}
             </x-responsive-nav-link>
         </div>
 

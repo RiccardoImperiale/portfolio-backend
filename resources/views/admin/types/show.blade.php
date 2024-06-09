@@ -29,7 +29,7 @@
                             <button data-modal-target="modal-{{ $project->id }}"
                                 class="text-white bg-gray-700 hover:bg-gray-800 font-medium rounded-lg text-sm px-5 py-2 focus:outline-none">Delete</button>
 
-                            <x-delete-modal :target="$project" section="projects" />
+                            <x-delete-modal :project="$project" />
                         </div>
                     </div>
                     {{-- project --}}

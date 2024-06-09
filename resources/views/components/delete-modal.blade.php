@@ -1,13 +1,13 @@
-<div id="modal-{{ $project->id }}" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
+<div id="modal-{{ $target->id }}" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
     <div class="relative top-20 mx-auto p-5 border w-[400px] shadow-lg rounded-md bg-white">
         <!-- Modal content -->
         <div>
             <div class="flex justify-between gap-5 mb-10">
-                <h2 class="text-xl w-[300px]">Are you sure you want to delete this project?</h2>
+                <h2 class="text-xl w-[250px] text-left">Are you sure you want to delete it?</h2>
                 <button
                     class="close-modal w-8 h-8 text-white bg-gray-700 hover:bg-indigo-800 font-medium rounded-lg text-sm focus:outline-none">X</button>
             </div>
-            <form action="{{ route('admin.projects.destroy', $project) }}" method="post">
+            <form action="{{ route("admin.$section.destroy", $target) }}" method="post">
                 @csrf
                 @method('DELETE')
                 <button type="submit"
