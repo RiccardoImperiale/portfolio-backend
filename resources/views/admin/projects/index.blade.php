@@ -7,18 +7,18 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg ring-1 ring-gray-700">
 
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg pb-10">
                     <table class="w-full text-sm text-left text-gray-500 ">
                         <div
                             class="flex justify-between items-center w-full px-6 py-10 text-lg font-semibold text-left text-gray-900 bg-white">
-                            <div>
+                            <div class="font-bold text-xl text-gray-700">
                                 All Projects
                             </div>
-                            <button type="button"
+                            <a href="{{ route('admin.projects.create') }}"
                                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">New
-                                Project</button>
+                                Project</a>
                         </div>
                         <thead class="text-xs text-white uppercase bg-gray-700 ">
                             <tr>
@@ -46,11 +46,6 @@
                                         {{ $project->title }}
                                     </th>
                                     <td class="px-6 py-4">
-                                        {{-- <img class="h-12 w-12 flex-none rounded-full bg-gray-50"
-                                            src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                            alt=""> --}}
-
-
                                         @if (Storage::exists("storage/$project->image"))
                                             <img class="h-12 w-12 flex-none rounded-full bg-gray-50"
                                                 src="{{ asset("storage/$project->image") }}"
