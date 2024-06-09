@@ -24,7 +24,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        return view('admin.types.create', compact('types'));
+        return back();
     }
 
     /**
@@ -61,9 +61,12 @@ class TypeController extends Controller
      */
     public function update(UpdateTypeRequest $request, Type $type)
     {
-        $type->update($request->validated());
+        $validated = $request->validated();
+        $validated['slug'] = Str::slug($request->name, '-');
 
-        return to_route('admin.types.index')->with('message', "Type $type->name updated successfully");
+        $type->update($validated);
+
+        return to_route('admin.types.index', $type)->with('message', "Type $type->name updated successfully");
     }
 
     /**

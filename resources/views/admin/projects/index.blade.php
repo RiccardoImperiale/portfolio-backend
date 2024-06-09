@@ -61,7 +61,7 @@
                                         {{ $project->type?->name ?? 'no type' }}
                                     </td>
                                     <td class="px-6 py-4 ">
-                                        <div class="flex min-h-full gap-3 items-center">
+                                        <div class="flex min-h-full gap-1.5 items-center">
                                             @foreach ($project->technologies as $tech)
                                                 <div class="bg-gray-200 py-1 px-3 rounded-lg text-sm">
                                                     {{ $tech->name }}

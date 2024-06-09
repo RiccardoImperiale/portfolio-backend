@@ -6,6 +6,7 @@ use App\Http\Requests\StoreTechnologyRequest;
 use App\Http\Requests\UpdateTechnologyRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Technology;
+use Illuminate\Support\Str;
 
 class TechnologyController extends Controller
 {
@@ -14,7 +15,8 @@ class TechnologyController extends Controller
      */
     public function index()
     {
-        //
+        $technologies = Technology::orderByDesc('id')->paginate(5);
+        return view('admin.technologies.index', compact('technologies'));
     }
 
     /**
@@ -22,7 +24,7 @@ class TechnologyController extends Controller
      */
     public function create()
     {
-        //
+        return back();
     }
 
     /**
@@ -30,7 +32,11 @@ class TechnologyController extends Controller
      */
     public function store(StoreTechnologyRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $validated['slug'] = Str::slug($request->name, '-');
+
+        $technology = Technology::create($validated);
+        return to_route('admin.technologies.index')->with('message', "Type $technology->name created successfully");
     }
 
     /**
@@ -38,7 +44,7 @@ class TechnologyController extends Controller
      */
     public function show(Technology $technology)
     {
-        //
+        return back();
     }
 
     /**
@@ -46,7 +52,7 @@ class TechnologyController extends Controller
      */
     public function edit(Technology $technology)
     {
-        //
+        return back();
     }
 
     /**
@@ -54,7 +60,12 @@ class TechnologyController extends Controller
      */
     public function update(UpdateTechnologyRequest $request, Technology $technology)
     {
-        //
+        $validated = $request->validated();
+        $validated['slug'] = Str::slug($request->name, '-');
+
+        $technology->update($validated);
+
+        return to_route('admin.technologies.index', $technology)->with('message', "Tech $technology->name updated successfully");
     }
 
     /**
@@ -62,6 +73,7 @@ class TechnologyController extends Controller
      */
     public function destroy(Technology $technology)
     {
-        //
+        $technology->delete();
+        return to_route('admin.technologies.index', $technology)->with('message', "Technology $technology->name deleted successfully");
     }
 }
