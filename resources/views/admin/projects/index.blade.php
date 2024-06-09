@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg ring-1 ring-gray-700">
 
-                <div class="relative overflow-x-auto shadow-md sm:rounded-lg pb-10">
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left text-gray-500 ">
                         <div
                             class="flex justify-between items-center w-full px-6 py-10 text-lg font-semibold text-left text-gray-900 bg-white">
@@ -46,7 +46,7 @@
                                         {{ $project->title }}
                                     </th>
                                     <td class="px-6 py-4">
-                                        @if (Storage::exists("storage/$project->image"))
+                                        @if ($project->image)
                                             <img class="h-12 w-12 flex-none rounded-full bg-gray-50"
                                                 src="{{ asset("storage/$project->image") }}"
                                                 alt="{{ $project->title }} image">
@@ -83,12 +83,10 @@
                             @endforelse
                         </tbody>
                     </table>
+                    <div class="pagination p-6">
+                        {{ $projects->links() }}
+                    </div>
                 </div>
-
-
-
-
-
             </div>
         </div>
     </div>
