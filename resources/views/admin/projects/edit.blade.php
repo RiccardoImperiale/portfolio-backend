@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white p-10 overflow-hidden shadow-sm sm:rounded-lg ring-1 ring-gray-700">
-                <h3 class="font-bold text-xl text-gray-700">Edit Project</h3>
+                <h3 class="font-bold text-xl text-indigo-700">Edit Project</h3>
                 <x-error-messages />
 
                 <form action="{{ route('admin.projects.update', $project) }}" enctype="multipart/form-data" method="post">
