@@ -5,19 +5,19 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="py-12 ">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg ring-1 ring-gray-700">
 
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                    <table class="w-full text-sm text-left text-gray-500 ">
+                    <table class="w-full text-sm text-left text-gray-500">
                         <div
                             class="flex justify-between items-center w-full px-6 py-10 text-lg font-semibold text-left text-gray-900 bg-white">
                             <div class="font-bold text-xl text-gray-700">
                                 All Projects
                             </div>
                             <a href="{{ route('admin.projects.create') }}"
-                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">New
+                                class="text-white bg-indigo-700 hover:bg-indigo-800 font-medium rounded-lg text-sm px-5 py-2.5  focus:outline-none ">New
                                 Project</a>
                         </div>
                         <thead class="text-xs text-white uppercase bg-gray-700 ">
@@ -69,13 +69,15 @@
                                             @endforeach
                                         </div>
                                     </td>
-                                    <td class="px-6 py-4 text-right">
-                                        <a href="#"
-                                            class="font-medium ms-3 text-blue-600 hover:underline">Show</a>
-                                        <a href="#"
-                                            class="font-medium ms-3 text-blue-600 hover:underline">Edit</a>
-                                        <a href="#"
-                                            class="font-medium ms-3 text-red-600 hover:underline">Delete</a>
+                                    <td class="px-6 py-4 text-right ">
+                                        <a href="{{ route('admin.projects.show', $project) }}"
+                                            class="flex items-center">
+                                            <svg style="fill: #374151" xmlns="http://www.w3.org/2000/svg" width="22"
+                                                height="22" viewBox="0 0 24 24">
+                                                <path
+                                                    d="M15 12c0 1.654-1.346 3-3 3s-3-1.346-3-3 1.346-3 3-3 3 1.346 3 3zm9-.449s-4.252 8.449-11.985 8.449c-7.18 0-12.015-8.449-12.015-8.449s4.446-7.551 12.015-7.551c7.694 0 11.985 7.551 11.985 7.551zm-7 .449c0-2.757-2.243-5-5-5s-5 2.243-5 5 2.243 5 5 5 5-2.243 5-5z" />
+                                            </svg>
+                                        </a>
                                     </td>
                                 </tr>
                             @empty
