@@ -9,6 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg ring-1 ring-gray-700">
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg px-6 pt-10 pb-2">
+                    {{-- header --}}
                     <div
                         class="flex justify-between border-b border-gray-900/10 items-center w-full py-10 text-lg font-semibold text-left text-gray-900 bg-white">
                         <div>
@@ -22,10 +23,16 @@
                         <div>
                             <a href="{{ route('admin.projects.edit', $project) }}"
                                 class="text-white bg-indigo-700 hover:bg-indigo-800 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none ">Edit</a>
-                            <a href="{{ route('admin.projects.create') }}"
-                                class="text-white bg-gray-700 hover:bg-gray-800 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none ">Delete</a>
+
+
+                            {{-- delete modal --}}
+                            <a href="#" data-modal-target="modal-{{ $project->id }}"
+                                class="text-white bg-gray-700 hover:bg-gray-800 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none">Delete</a>
+
+                            <x-delete-modal :project="$project" />
                         </div>
                     </div>
+                    {{-- project --}}
                     <div class="py-10 flex gap-10">
                         <div class="image w-3/5 h-[500px] overflow-hidden bg-gray-100 rounded">
                             @if ($project->image)
@@ -59,7 +66,7 @@
                                 @endif
                             </div>
                             <div class="flex gap-2">
-                                @if ($project->live_link)
+                                @if ($project->live_link && str_starts_with($project->live_link, 'https://'))
                                     <div class="live_link ">
                                         <a href="{{ $project->live_link }}" target="_blank"
                                             class="bg-gray-700 p-2 text-white px-3 rounded-lg">
@@ -67,7 +74,7 @@
                                         </a>
                                     </div>
                                 @endif
-                                @if ($project->code_link)
+                                @if ($project->code_link && str_starts_with($project->code_link, 'https://'))
                                     <div class="code_link ">
                                         <a href="{{ $project->code_link }}" target="_blank"
                                             class="bg-gray-700 p-2 text-white px-3 rounded-lg">
