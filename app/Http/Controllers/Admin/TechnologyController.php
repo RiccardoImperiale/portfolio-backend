@@ -20,14 +20,6 @@ class TechnologyController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return back();
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(StoreTechnologyRequest $request)
@@ -37,22 +29,6 @@ class TechnologyController extends Controller
 
         $technology = Technology::create($validated);
         return to_route('admin.technologies.index')->with('message', "Type $technology->name created successfully");
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Technology $technology)
-    {
-        return back();
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Technology $technology)
-    {
-        return back();
     }
 
     /**
