@@ -22,7 +22,7 @@ class UpdateTechnologyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|unique:technologies,name|min:3|max:25',
+            'name' => 'required|string|unique:technologies,name|min:3|max:25',
         ];
     }
 }
