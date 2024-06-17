@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('live_link')->nullable();
             $table->string('code_link')->nullable();
+            $table->boolean('featured')->default(false);
             $table->timestamps();
         });
     }

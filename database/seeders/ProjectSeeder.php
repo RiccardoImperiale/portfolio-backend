@@ -16,12 +16,14 @@ class ProjectSeeder extends Seeder
     {
         $projects = [
             [
+                'id' => 1,
                 'type_id' => null,
                 'title' => 'iPhone 15 Website',
                 'description' => 'lorem description project 1 ipsum sum pronobis opus cementitio',
                 'image' => null,
                 'live_link' => 'https://iphone15webclone.netlify.app/',
                 'code_link' => 'https://github.com/RiccardoImperiale/iPhone-website-clone',
+                'featured' => true
             ],
         ];
 
@@ -34,6 +36,7 @@ class ProjectSeeder extends Seeder
             $newProject->image = $project['image'];
             $newProject->live_link = $project['live_link'];
             $newProject->code_link = $project['code_link'];
+            $newProject->featured = $project['featured'];
             $newProject->save();
         }
     }
